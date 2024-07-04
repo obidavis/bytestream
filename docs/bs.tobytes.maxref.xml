@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml-stylesheet href="./c74ref.xsl" type="text/xsl"?>
+
+<c74object name="bs.tobytes">
+
+    <!--DESCRIPTION-->
+    <digest>
+
+    </digest>
+    <description>
+
+    </description>
+
+    <!--METADATA-->
+    <metadatalist>
+        <metadata name="author"></metadata>
+        <metadata name="tag"></metadata>
+        <metadata name="tag"></metadata>
+        <metadata name="tag"></metadata>
+    </metadatalist>
+
+    <!--INLETS-->
+    <inletlist>
+        <inlet id="0" type="">
+            <digest>
+
+            </digest>
+            <description>
+
+            </description>
+        </inlet>
+    </inletlist>
+
+    <!--OUTLETS-->
+    <outletlist>
+        <outlet id="0" type="">
+            <digest>
+
+            </digest>
+            <description>
+
+            </description>
+        </outlet>
+    </outletlist>
+
+    <!--ARGUMENTS-->
+    <objarglist>
+        <objarg name="" optional="" type="">
+            <digest>
+
+            </digest>
+        </objarg>
+    </objarglist>
+
+    <!--MESSAGES-->
+    <methodlist>
+        <method name="">
+            <arglist>
+                <arg name="" optional="" type=""/>
+            </arglist>
+            <digest>
+
+            </digest>
+            <description>
+
+            </description>
+        </method>
+    </methodlist>
+
+    <!--ATTRIBUTES-->
+    <attributelist>
+        <attribute name="" get="1" set="1" type="" size="">
+            <digest>
+
+            </digest>
+            <description>
+
+            </description>
+        </attribute>
+    </attributelist>
+
+    <!--SEE ALSO-->
+    <seealsolist>
+        <seealso name=""/>
+    </seealsolist>
+</c74object>
