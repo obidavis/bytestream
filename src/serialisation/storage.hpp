@@ -62,7 +62,7 @@ struct atom_storage {
         auto copy = [this]<typename U>(maxutils::matrix_view<U> m) {
             for (size_t row_index = 0; row_index < m.nrows(); ++row_index) {
                 auto row = m.row(row_index);
-                
+
             }
         };
 

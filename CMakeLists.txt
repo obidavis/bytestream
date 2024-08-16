@@ -6,12 +6,11 @@ set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64" CACHE STRING "macOS architecture" FOR
 set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15e" CACHE STRING "macOS deployment target" FORCE)
 
 include(cmake/fetch_max_sdk_base.cmake)
-include(cmake/fetch_bytestream.cmake)
 include(cmake/fetch_maxutils.cmake)
 include(cmake/fetch_zpp_bits.cmake)
 include(cmake/fetch_sadamlib-sdk.cmake)
 add_subdirectory(src/serialisation)
-set(BYTESTREAM_LIBS bytestream maxutils zpp_bits sadamlib-sdk)
+set(BYTESTREAM_LIBS maxutils zpp_bits sadamlib-sdk)
 
 set(BYTESTREAM_INCLUDES
         ${CMAKE_CURRENT_SOURCE_DIR}/include
