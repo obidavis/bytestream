@@ -14,6 +14,7 @@ set(BYTESTREAM_LIBS maxutils zpp_bits sadamlib-sdk)
 
 set(BYTESTREAM_INCLUDES
         ${CMAKE_CURRENT_SOURCE_DIR}/include
+        ${MAX_SDK_BASE}/c74support
 )
 
 

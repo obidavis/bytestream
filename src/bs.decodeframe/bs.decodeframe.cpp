@@ -1,3 +1,5 @@
+
+#include "c74_max.h"
 #include "ext.h"
 #include "ext_obex.h"
 #include "bytestream/COBS.hpp"
@@ -5,6 +7,8 @@
 #include "maxutils/attributes.hpp"
 #include <span>
 #include <vector>
+
+using namespace c74::max;
 
 struct t_bs_decodeframe {
     t_object ob;

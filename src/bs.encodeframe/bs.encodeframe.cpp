@@ -1,5 +1,5 @@
 #include <numeric>
-
+#include "c74_max.h"
 #include "ext.h"
 #include "ext_obex.h"
 #include "bytestream/COBS.hpp"
@@ -9,14 +9,14 @@
 #include <vector>
 #include <ranges>
 
+using namespace c74::max;
+
 struct t_bs_encodeframe {
     t_object ob;
     enum Mode { COBS, SLIP } mode;
     t_outlet *out;
     t_symbol *stream_name;
 };
-
-static void bs_encodeframe_
 
 extern "C" {
 // Basic Methods

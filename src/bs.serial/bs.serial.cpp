@@ -1,3 +1,6 @@
+#include "c74_max.h"
+using namespace c74::max;
+
 #include <ext_globalsymbol.h>
 #include <regex>
 #include <filesystem>

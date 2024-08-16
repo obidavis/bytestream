@@ -1,13 +1,18 @@
+#include "c74_max.h"
+
+using namespace c74::max;
+
 #include <ext_globalsymbol.h>
 
 #include "ext.h"
 #include "ext_obex.h"
 #include "zpp_bits.h"
+#include "atom_views.hpp"
 #include "type_info.hpp"
+#include "storage.hpp"
 #include <ranges>
 #include <sadam.stream.h>
 
-#include "atom_views.hpp"
 #include "maxutils/attributes.hpp"
 
 enum class Endianness : long {

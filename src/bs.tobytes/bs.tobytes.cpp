@@ -1,3 +1,5 @@
+#include "c74_max.h"
+using namespace c74::max;
 #include "ext.h"
 #include "ext_obex.h"
 #include "ext_globalsymbol.h"
@@ -10,6 +12,7 @@
 #include <ranges>
 
 #include "maxutils/attributes.hpp"
+
 
 struct t_bs_tobytes {
     t_object ob;

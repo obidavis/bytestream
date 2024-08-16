@@ -27,6 +27,8 @@ target_include_directories(
         "${BYTESTREAM_INCLUDES}"
 )
 
+target_link_libraries(${PROJECT_NAME} PRIVATE serialisation)
+
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
 
 include(${MAX_SDK_BASE}/script/max-posttarget.cmake)
