@@ -4,6 +4,7 @@
 #include "jit.common.h"
 #include "zpp_bits.h"
 #include "type_info.hpp"
+#include "storage.hpp"
 #include "atom_views.hpp"
 #include "sadam.stream.h"
 #include <ranges>
@@ -109,11 +110,10 @@ void *bs_tobytes_new(t_symbol *, long argc, t_atom *argv) {
     }
 
     try {
-        auto storages = args
-            | std::views::transform(to_string)
-            | std::views::transform([](const std::string &s) { return type_info(s); })
-            | std::views::transform([](const type_info &ti) { return storage(ti); });
-        x->storages = std::vector(storages.begin(), storages.end());
+        std::ranges::transform(args, std::back_inserter(x->storages), [](const t_atom &a) {
+            const type_info ti(to_string(a));
+            return storage(ti);
+        });
 
         for (size_t i = x->storages.size() - 1; i > 0; --i) {
             void *proxy = proxy_new(x, (long)i, &x->proxy_id);
@@ -210,7 +210,6 @@ void bs_tobytes_bang(t_bs_tobytes *x) {
         }
         outlet_list(x->outlet, nullptr, static_cast<short>(out_atoms.size()), out_atoms.data());
     }
-
 }
 
 void bs_tobytes_int(t_bs_tobytes *x, long n) {
@@ -252,7 +251,6 @@ void bs_tobytes_jit_matrix(t_bs_tobytes *x, t_symbol *s, long argc, t_atom *argv
         object_error((t_object *) x, "Matrix not found");
         return;
     }
-
 }
 
 

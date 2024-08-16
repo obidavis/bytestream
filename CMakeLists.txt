@@ -10,11 +10,13 @@ include(cmake/fetch_bytestream.cmake)
 include(cmake/fetch_maxutils.cmake)
 include(cmake/fetch_zpp_bits.cmake)
 include(cmake/fetch_sadamlib-sdk.cmake)
+add_subdirectory(src/serialisation)
 set(BYTESTREAM_LIBS bytestream maxutils zpp_bits sadamlib-sdk)
 
 set(BYTESTREAM_INCLUDES
         ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
+
 
 file(GLOB PROJECTS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} src/*)
 foreach(PROJECT_DIR ${PROJECTS})
@@ -23,6 +25,9 @@ foreach(PROJECT_DIR ${PROJECTS})
             continue()
         endif()
         get_filename_component(SUB_PROJECT_NAME ${PROJECT_DIR} NAME)
+        if (NOT SUB_PROJECT_NAME MATCHES "bs\.+")
+            continue()
+        endif()
         message(STATUS "Adding project: ${SUB_PROJECT_NAME}")
         add_subdirectory(${PROJECT_DIR})
         target_link_libraries(${SUB_PROJECT_NAME} PRIVATE ${BYTESTREAM_LIBS})

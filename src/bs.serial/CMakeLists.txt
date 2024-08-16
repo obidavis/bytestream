@@ -9,6 +9,7 @@ file(GLOB PROJECT_SRC
         "*.hpp"
         "*.c"
         "*.cpp"
+        ${MAX_SDK_INCLUDES}/common/commonsyms.c
 )
 
 add_library(

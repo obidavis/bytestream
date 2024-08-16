@@ -11,9 +11,9 @@
 
 static std::vector<std::string> get_serial_devices(const std::string &pattern);
 
-class serial_reader {
+class serial_port {
 public:
-    serial_reader(boost::asio::io_context &io_context, const std::string &device)
+    serial_port(boost::asio::io_context &io_context, const std::string &device)
         : port(io_context, device), device(device) {
         open_port();
     }
@@ -77,7 +77,7 @@ int main() {
         return 1;
     }
 
-    serial_reader serial(io_context, devices[0]);
+    serial_port serial(io_context, devices[0]);
     std::thread t(io_context_run, std::ref(io_context));
 
     while (true) {
