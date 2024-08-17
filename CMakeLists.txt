@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.27)
 
 project(bytestream)
 set(CMAKE_CXX_STANDARD 20)
-#set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64" CACHE STRING "macOS architecture" FORCE)
+set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64" CACHE STRING "macOS architecture" FORCE)
 #set(CMAKE_OSX_DEPLOYMENT_TARGET "10.15e" CACHE STRING "macOS deployment target" FORCE)
 
 include(cmake/fetch_max_sdk_base.cmake)
