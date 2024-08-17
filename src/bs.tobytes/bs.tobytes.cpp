@@ -250,9 +250,15 @@ void bs_tobytes_notify(t_bs_tobytes *x, t_symbol *s, t_symbol *msg, void *sender
 void bs_tobytes_jit_matrix(t_bs_tobytes *x, t_symbol *s, long argc, t_atom *argv) {
     t_symbol *name = atom_getsym(argv);
     t_jit_object *matrix = (t_jit_object *)jit_object_findregistered(name);
-    if (!matrix) {
-        object_error((t_object *) x, "Matrix not found");
-        return;
+    if (matrix) {
+        try {
+            bs_tobytes_handle_data(x, proxy_getinlet((t_object *)x ), matrix);
+        } catch (const std::exception &e) {
+            object_error((t_object *)x, e.what());
+        }
+    }
+    else {
+        object_error((t_object *)x, "Couldn't find matrix %s", name->s_name);
     }
 }
 

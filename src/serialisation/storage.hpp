@@ -54,25 +54,32 @@ struct atom_storage {
     }
 
     void load(t_jit_object *matrix) {
-        t_jit_matrix_info info;
-        jit_object_method(matrix, _jit_sym_getinfo, &info);
-        if (info.dimcount > 2) {
+        t_jit_matrix_info matrix_info;
+        jit_object_method(matrix, _jit_sym_getinfo, &matrix_info);
+        if (matrix_info.dimcount > 2) {
             throw std::runtime_error("more than 2d matrices not supported");
         }
-        auto copy = [this]<typename U>(maxutils::matrix_view<U> m) {
-            for (size_t row_index = 0; row_index < m.nrows(); ++row_index) {
-                auto row = m.row(row_index);
 
+
+        auto copy = [this]<typename U>(maxutils::matrix_view<U> m) {
+            if (info.is_variable_length()) {
+                data.resize(m.nrows() * m.ncols());
+            }
+
+            for (size_t row_index = 0; row_index < m.nrows(); ++row_index) {
+                std::span row_span = m.row(row_index).as_1d_span();
+                auto data_start = data.begin() + row_index * row_span.size();
+                std::copy(row_span.begin(), row_span.end(), data_start);
             }
         };
 
-        if (info.type == _jit_sym_char) {
+        if (matrix_info.type == _jit_sym_char) {
             copy(maxutils::matrix_view<char>(matrix));
-        } else if (info.type == _jit_sym_long) {
+        } else if (matrix_info.type == _jit_sym_long) {
             copy(maxutils::matrix_view<int32_t>(matrix));
-        } else if (info.type == _jit_sym_float32) {
+        } else if (matrix_info.type == _jit_sym_float32) {
             copy(maxutils::matrix_view<float>(matrix));
-        } else if (info.type == _jit_sym_float64) {
+        } else if (matrix_info.type == _jit_sym_float64) {
             copy(maxutils::matrix_view<double>(matrix));
         }
     }
